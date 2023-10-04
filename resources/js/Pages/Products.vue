@@ -1,10 +1,27 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import AddProductSlide  from "@/Components/AddProductSlide.vue";
+import axios from 'axios';
 
 const addProductSlide = ref(false);
 
+
+
+const getDrinks = () => {
+    axios.get(route('get.drinks'))
+    .then((res)=>{
+        console.log(res.data)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+
+
+onMounted(()=>{
+    getDrinks();
+});
 </script>
 
 <template>
