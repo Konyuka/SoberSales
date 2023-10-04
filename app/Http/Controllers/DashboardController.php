@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function InventoryHome ()
+    public function productsHome()
     {
         return Inertia::render('Inventory');
     }

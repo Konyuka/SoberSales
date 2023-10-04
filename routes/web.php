@@ -25,5 +25,5 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/inventory_home', [DashboardController::class, 'InventoryHome'])->name('inventory.home');
+    Route::get('/products_home', [DashboardController::class, 'productsHome'])->name('products.home');
 });
