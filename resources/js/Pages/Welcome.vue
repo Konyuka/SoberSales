@@ -1,4 +1,8 @@
 <script setup>
+import { ref } from "vue";
+import { Link } from "@inertiajs/vue3";
+
+const closeMobileMenu = ref(false)
 
 </script>
 
@@ -15,7 +19,7 @@
                         </a>
                     </div>
                     <div class="flex lg:hidden">
-                        <button type="button"
+                        <button @click="closeMobileMenu = !closeMobileMenu" type="button"
                             class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
                             <span class="sr-only">Open main menu</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -31,14 +35,10 @@
                         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
                         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
                     </div>
-                    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span
-                                aria-hidden="true">&rarr;</span></a>
-                    </div>
                 </nav>
 
                 <!-- Mobile menu, show/hide based on menu open state. -->
-                <div class="lg:hidden" role="dialog" aria-modal="true">
+                <div v-if="closeMobileMenu" class="lg:hidden" role="dialog" aria-modal="true">
                     <!-- Background backdrop, show/hide based on slide-over state. -->
                     <div class="fixed inset-0 z-50"></div>
                     <div
@@ -49,7 +49,7 @@
                                 <img class="h-8 w-auto"
                                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
                             </a>
-                            <button @click="closeMobileMenu" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                            <button @click="closeMobileMenu=!closeMobileMenu" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                                 <span class="sr-only">Close menu</span>
                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" aria-hidden="true">
@@ -68,11 +68,6 @@
                                         class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
                                     <a href="#"
                                         class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
-                                </div>
-                                <div class="py-6">
-                                    <a href="#"
-                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
-                                        in</a>
                                 </div>
                             </div>
                         </div>
@@ -115,11 +110,11 @@
                                         aute velit. Et labore commodo nulla aliqua proident mollit ullamco exercitation
                                         tempor. Sint aliqua anim nulla sunt mollit id pariatur in voluptate cillum.</p>
                                     <div class="mt-10 flex items-center gap-x-6">
-                                        <a href="#"
+                                        <Link :href="route('register')"
                                             class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
-                                            started</a>
-                                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Live demo <span
-                                                aria-hidden="true">→</span></a>
+                                            started</Link>
+                                        <Link :href="route('login')" class="text-sm font-semibold leading-6 text-gray-900">Login <span
+                                                aria-hidden="true">→</span></Link>
                                     </div>
                                 </div>
                                 <div
