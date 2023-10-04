@@ -391,7 +391,7 @@ const logout = () => {
                     </div>
                 </div>
 
-                <main class="py-10 bg-white h-[100vh]">
+                <main class="py-10 bg-white h-screen">
                     <div class="px-4 sm:px-6 lg:px-8">
 
                         <slot />
